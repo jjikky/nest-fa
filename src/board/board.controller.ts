@@ -12,6 +12,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { CreateBoardDto } from './dto/create-board.dto';
+import { UpdateBoardDto } from './dto/update-board.dto';
 
 @Controller('board')
 @ApiTags('Board')
@@ -36,7 +37,7 @@ export class BoardController {
   @Put(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
-    @Body(new ValidationPipe()) board: CreateBoardDto,
+    @Body(new ValidationPipe()) board: UpdateBoardDto,
   ) {
     console.log(id);
     return this.boardService.updateOne(id, board);
