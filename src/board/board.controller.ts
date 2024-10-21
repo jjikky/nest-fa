@@ -9,6 +9,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { CreateBoardDto } from './dto/create-board.dto';
 
 @Controller('board')
 @ApiTags('Board')
@@ -26,12 +27,12 @@ export class BoardController {
   }
 
   @Post()
-  create(@Body() board: any) {
+  create(@Body() board: CreateBoardDto) {
     return this.boardService.create(board);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() board: any) {
+  update(@Param('id') id: number, @Body() board: CreateBoardDto) {
     console.log(id);
     return this.boardService.updateOne(Number(id), board);
   }
