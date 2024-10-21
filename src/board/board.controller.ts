@@ -1,3 +1,4 @@
+import { ApiTags } from '@nestjs/swagger';
 import { BoardService } from './board.service';
 import {
   Body,
@@ -10,6 +11,7 @@ import {
 } from '@nestjs/common';
 
 @Controller('board')
+@ApiTags('Board')
 export class BoardController {
   constructor(private readonly boardService: BoardService) {}
 
