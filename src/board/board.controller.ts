@@ -6,8 +6,10 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Post,
   Put,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CreateBoardDto } from './dto/create-board.dto';
 
@@ -22,23 +24,26 @@ export class BoardController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.boardService.findOne(Number(id));
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.boardService.findOne(id);
   }
 
   @Post()
-  create(@Body() board: CreateBoardDto) {
+  create(@Body(new ValidationPipe()) board: CreateBoardDto) {
     return this.boardService.create(board);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() board: CreateBoardDto) {
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body(new ValidationPipe()) board: CreateBoardDto,
+  ) {
     console.log(id);
-    return this.boardService.updateOne(Number(id), board);
+    return this.boardService.updateOne(id, board);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number) {
-    return this.boardService.deleteOne(Number(id));
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.boardService.deleteOne(id);
   }
 }
