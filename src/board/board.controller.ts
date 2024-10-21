@@ -1,3 +1,4 @@
+import { BoardService } from './board.service';
 import {
   Body,
   Controller,
@@ -10,28 +11,31 @@ import {
 
 @Controller('board')
 export class BoardController {
+  constructor(private readonly boardService: BoardService) {}
+
   @Get()
   findAll() {
-    return 'findAll';
+    return this.boardService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return `find id : ${id}`;
+    return this.boardService.findOne(Number(id));
   }
 
   @Post()
   create(@Body() board: any) {
-    return 'create';
+    return this.boardService.create(board);
   }
 
   @Put(':id')
   update(@Param('id') id: number, @Body() board: any) {
-    return `update id : ${id}`;
+    console.log(id);
+    return this.boardService.updateOne(Number(id), board);
   }
 
   @Delete(':id')
   remove(@Param('id') id: number) {
-    return `delete id : ${id}`;
+    return this.boardService.deleteOne(Number(id));
   }
 }

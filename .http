@@ -1,0 +1,24 @@
+GET http://localhost:3000/board
+###
+
+POST http://localhost:3000/board
+Content-Type: application/json
+
+{
+    "name": "4",
+    "contents": "4"
+}
+###
+
+
+PUT http://localhost:3000/board/4
+Content-Type: application/json
+
+{
+    "name": "4",
+    "contents": "44"
+}
+
+###
+DELETE http://localhost:3000/board/4
+Content-Type: application/json
