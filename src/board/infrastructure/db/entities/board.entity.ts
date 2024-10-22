@@ -15,10 +15,6 @@ export class Board {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
-  @ApiProperty({ description: 'user_id' })
-  @Column()
-  userId: number;
-
   @ApiProperty({ description: '내용' })
   @Column()
   contents: string;
@@ -31,7 +27,7 @@ export class Board {
   @CreateDateColumn()
   createdAt: Date;
 
-  @Column()
+  @ApiProperty({ description: '사용자' })
   @ManyToOne(() => User)
   @JoinColumn({ name: 'userId' })
   user: User;
