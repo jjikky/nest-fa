@@ -30,17 +30,9 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       synchronize: this.configService.get<boolean>('database.synchronize', {
         infer: true,
       }),
-      entities: [__dirname + '/**/*.entity.{.ts,.js}'],
+      entities: [__dirname + '/../**/*.entity.{ts,js}'],
       dropSchema: false,
       keepConnectionAlive: true,
     } as TypeOrmModuleOptions;
   }
 }
-
-//  type: 'postgres',
-//       host: 'localhost',
-//       port: 5432,
-//       username: 'jikky',
-//       password: '0000',
-//       database: 'nest-fa-board',
-//       synchronize: false,
