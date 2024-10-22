@@ -3,7 +3,7 @@ import { BoardEntity } from 'src/board/infrastructure/db/entities/board.entity';
 import { EntityRelationalHelper } from 'src/utils/relational-entity-helper';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'user' })
 export class UserEntity extends EntityRelationalHelper {
   @PrimaryGeneratedColumn()
   id: number;

@@ -11,7 +11,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'board' })
 export class BoardEntity extends EntityRelationalHelper {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
