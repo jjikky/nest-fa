@@ -27,6 +27,7 @@ const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
     ConfigModule.forRoot({
       isGlobal: true,
       load: [appConfig, databaseConfig],
+      envFilePath: ['.env'],
     }),
     infrastructureDatabaseModule,
     BoardModule,
