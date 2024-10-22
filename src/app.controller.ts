@@ -4,6 +4,7 @@ import {
   HttpException,
   HttpStatus,
   Ip,
+  Logger,
   Query,
 } from '@nestjs/common';
 import { AppService } from './app.service';
@@ -14,7 +15,6 @@ export class AppController {
 
   @Get()
   getHello(@Ip() ip: string): string {
-    throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
     console.log(`IP Address: ${ip}`);
     return this.appService.getHello();
   }
