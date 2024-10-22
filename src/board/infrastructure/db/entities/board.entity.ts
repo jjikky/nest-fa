@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { User } from 'src/user/infrastructure/db/entities/user.entity';
+import { UserEntity } from 'src/user/infrastructure/db/entities/user.entity';
+import { EntityRelationalHelper } from 'src/utils/relational-entity-helper';
 import {
   Column,
   CreateDateColumn,
@@ -11,7 +12,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Board {
+export class BoardEntity extends EntityRelationalHelper {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
@@ -28,7 +29,7 @@ export class Board {
   createdAt: Date;
 
   @ApiProperty({ description: '사용자' })
-  @ManyToOne(() => User)
+  @ManyToOne(() => UserEntity)
   @JoinColumn({ name: 'userId' })
-  user: User;
+  user: UserEntity;
 }

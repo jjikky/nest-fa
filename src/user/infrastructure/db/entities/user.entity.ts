@@ -1,9 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Board } from 'src/board/infrastructure/db/entities/board.entity';
+import { BoardEntity } from 'src/board/infrastructure/db/entities/board.entity';
+import { EntityRelationalHelper } from 'src/utils/relational-entity-helper';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User {
+export class UserEntity extends EntityRelationalHelper {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -20,6 +21,6 @@ export class User {
   name: string;
 
   @ApiProperty({ description: '작성한 게시글' })
-  @OneToMany(() => Board, (board: Board) => board.user)
-  boards: Board[];
+  @OneToMany(() => BoardEntity, (board: BoardEntity) => board.user)
+  boards: BoardEntity[];
 }
