@@ -1,30 +1,57 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { UpdateBoardDto } from './dto/update-board.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { UserEntity } from 'src/user/infrastructure/db/entities/user.entity';
+import { BoardEntity } from './infrastructure/db/entities/board.entity';
 
 @Injectable()
 export class BoardService {
+  constructor(
+    @InjectRepository(UserEntity)
+    private userRepository: Repository<UserEntity>,
+    @InjectRepository(BoardEntity)
+    private boardRepository: Repository<BoardEntity>,
+  ) {}
+
   private boards = [
     { id: 1, title: '1', contents: '1' },
     { id: 2, title: '2', contents: '2' },
     { id: 3, title: '3', contents: '3' },
   ];
 
-  findAll() {
-    return this.boards;
+  async findAll() {
+    return await this.boardRepository.find();
   }
 
-  findOne(id: number) {
-    return this.boards.find((board) => board.id === id);
+  async findOne(id: number) {
+    const board = await this.boardRepository.findOne({
+      where: { id },
+      relations: { user: true },
+    });
+    if (!board) {
+      throw new HttpException('NotFound', HttpStatus.NOT_FOUND);
+    }
+
+    return board;
   }
 
-  create(data: CreateBoardDto) {
-    const newBoard = { id: this.getNextId(), ...data };
-    this.boards.push(newBoard);
-    return newBoard;
+  async create(data: CreateBoardDto) {
+    const user = await this.userRepository.findOne({
+      where: { id: data.userId },
+    });
+    if (!user) throw new Error('User not found');
+
+    const board = this.boardRepository.create({
+      ...data,
+      user,
+    });
+
+    return await this.boardRepository.save(board);
   }
 
-  updateOne(id: number, board: UpdateBoardDto) {
+  async updateOne(id: number, board: UpdateBoardDto) {
     const findBoard = this.boards.find((board) => board.id === id);
     if (findBoard) {
       Object.assign(findBoard, board);
@@ -32,7 +59,7 @@ export class BoardService {
     }
   }
 
-  deleteOne(id: number) {
+  async deleteOne(id: number) {
     const index = this.boards.findIndex((board) => board.id === id);
     if (index !== -1) {
       this.boards.splice(index, 1);
