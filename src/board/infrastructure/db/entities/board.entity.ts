@@ -16,6 +16,10 @@ export class BoardEntity extends EntityRelationalHelper {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
+  @ApiProperty({ description: 'user_id' })
+  @Column({ name: 'userId', nullable: true })
+  userId: number;
+
   @ApiProperty({ description: '내용' })
   @Column()
   contents: string;
@@ -32,7 +36,4 @@ export class BoardEntity extends EntityRelationalHelper {
   @ManyToOne(() => UserEntity)
   @JoinColumn({ name: 'userId' })
   user: UserEntity;
-
-  @Column({ name: 'userId', nullable: true })
-  userId: number;
 }
