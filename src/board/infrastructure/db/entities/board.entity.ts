@@ -32,4 +32,7 @@ export class BoardEntity extends EntityRelationalHelper {
   @ManyToOne(() => UserEntity)
   @JoinColumn({ name: 'userId' })
   user: UserEntity;
+
+  @Column({ name: 'userId', nullable: true })
+  userId: number;
 }
