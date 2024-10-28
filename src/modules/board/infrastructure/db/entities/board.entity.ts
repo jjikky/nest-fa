@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { UserEntity } from 'src/user/infrastructure/db/entities/user.entity';
+import { UserEntity } from 'src/modules/user/infrastructure/db/entities/user.entity';
 import { EntityRelationalHelper } from 'src/utils/relational-entity-helper';
 import {
   Column,

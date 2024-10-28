@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from 'src/user/infrastructure/db/entities/user.entity';
+import { UserEntity } from 'src/modules/user/infrastructure/db/entities/user.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()

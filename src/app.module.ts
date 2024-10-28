@@ -1,12 +1,13 @@
 import { Logger, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { BoardModule } from './board/board.module';
+import { BoardModule } from './modules/board/board.module';
 import { LoggingMiddleware } from './middleware/logging.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
 import { ConfigModule } from '@nestjs/config';
+import { UserModule } from './modules/user/user.module';
 import databaseConfig from './database/config/database.config';
 import appConfig from './config/app.config';
 
@@ -31,6 +32,7 @@ const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
     }),
     infrastructureDatabaseModule,
     BoardModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

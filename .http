@@ -30,3 +30,9 @@ Content-Type: application/json
 ###
 DELETE http://localhost:3000/board/2
 Content-Type: application/json
+
+
+###
+# 유저 전체 가져오기
+GET http://localhost:3000/user
+###
