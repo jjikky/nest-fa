@@ -20,31 +20,31 @@ export class BoardController {
   constructor(private readonly boardService: BoardService) {}
 
   @Get()
-  findAll() {
-    return this.boardService.findAll();
+  async findAll() {
+    return await this.boardService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.boardService.findOne(id);
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    console.log(id);
+    return await this.boardService.findOne(id);
   }
 
   @Post()
-  create(@Body(new ValidationPipe()) board: CreateBoardDto) {
-    return this.boardService.create(board);
+  async create(@Body(new ValidationPipe()) board: CreateBoardDto) {
+    return await this.boardService.create(board);
   }
 
   @Put(':id')
-  update(
+  async update(
     @Param('id', ParseIntPipe) id: number,
     @Body(new ValidationPipe()) board: UpdateBoardDto,
   ) {
-    console.log(id);
-    return this.boardService.updateOne(id, board);
+    return await this.boardService.updateOne(id, board);
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.boardService.deleteOne(id);
+  async remove(@Param('id', ParseIntPipe) id: number) {
+    return await this.boardService.deleteOne(id);
   }
 }
