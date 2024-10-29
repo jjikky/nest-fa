@@ -6,6 +6,7 @@ import { BoardEntity } from '../board/infrastructure/db/entities/board.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { hash, compare } from 'bcrypt';
 import { LoginUserDto } from './dto/login-user.dto';
+import * as jwt from 'jsonwebtoken';
 
 @Injectable()
 export class UserService {
@@ -45,7 +46,16 @@ export class UserService {
     if (!match)
       throw new HttpException('UNAUTHORIZED', HttpStatus.UNAUTHORIZED);
 
-    return user;
+    const payload = {
+      username,
+      name: user.name,
+    };
+
+    const accessToken = jwt.sign(payload, 'secret', {
+      expiresIn: '1h',
+    });
+
+    return { accessToken };
   }
 
   async encryptPassword(password: string) {
