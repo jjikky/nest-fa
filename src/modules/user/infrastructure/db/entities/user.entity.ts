@@ -13,7 +13,7 @@ export class UserEntity extends EntityRelationalHelper {
   username: string;
 
   @ApiProperty({ description: '비밀번호', example: 'password' })
-  @Column({ select: false })
+  @Column()
   password: string;
 
   @ApiProperty({ description: '이름' })
