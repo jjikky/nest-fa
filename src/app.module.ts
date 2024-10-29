@@ -8,6 +8,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './modules/user/user.module';
+import { AuthModule } from './auth/auth.module';
 import databaseConfig from './database/config/database.config';
 import appConfig from './config/app.config';
 
@@ -33,6 +34,7 @@ const infrastructureDatabaseModule = TypeOrmModule.forRootAsync({
     infrastructureDatabaseModule,
     BoardModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
