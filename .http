@@ -45,5 +45,15 @@ Content-Type: application/json
     "username": "useruser7",
     "name": "namename7",
     "password": "password7"
+}
+
+###
+# 로그인
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "username": "useruser7",
+    "password": "password7"
 
 }
