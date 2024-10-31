@@ -62,4 +62,12 @@ export class UserService {
     const DEFAULT_SALT = 11;
     return await hash(password, DEFAULT_SALT);
   }
+
+  async getUserByUsernameWithPassword(username: string) {
+    return this.userRepository
+      .createQueryBuilder('user')
+      .where('user.username = :username', { username })
+      .addSelect('user.password')
+      .getOne();
+  }
 }
