@@ -12,7 +12,7 @@ GET http://localhost:3000/board/1
 
 POST http://localhost:3000/board
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcnVzZXI3IiwibmFtZSI6Im5hbWVuYW1lNyIsImlhdCI6MTczMDM1MjQ0MywiZXhwIjoxNzMwMzU2MDQzfQ.j9fJnAYKGhz-pdej6PzL_74NuHBj1EKwy35nCB5_gdI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcnVzZXI3IiwibmFtZSI6Im5hbWVuYW1lNyIsImlhdCI6MTczMDM2MTEwNywiZXhwIjoxNzMzOTYxMTA3fQ.yT1JRYqzPY2muOpOvudDtTLTfoI_SPk8aiOiaj7b9Xw
 
 
 {
@@ -21,17 +21,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuY
 ###
 
 
-PUT http://localhost:3000/board/1
+PUT http://localhost:3000/board/11
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcnVzZXI3IiwibmFtZSI6Im5hbWVuYW1lNyIsImlhdCI6MTczMDM2MTEwNywiZXhwIjoxNzMzOTYxMTA3fQ.yT1JRYqzPY2muOpOvudDtTLTfoI_SPk8aiOiaj7b9Xw
 
 {
     "contents": "update"
 }
 
 ###
-DELETE http://localhost:3000/board/2
+DELETE http://localhost:3000/board/10
 Content-Type: application/json
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcnVzZXI3IiwibmFtZSI6Im5hbWVuYW1lNyIsImlhdCI6MTczMDM2MTEwNywiZXhwIjoxNzMzOTYxMTA3fQ.yT1JRYqzPY2muOpOvudDtTLTfoI_SPk8aiOiaj7b9Xw
 
 ###
 # 유저 전체 가져오기
@@ -74,4 +75,4 @@ Content-Type: application/json
 ###
 # 프로필 가져오기
 GET http://localhost:3000/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcnVzZXI3IiwibmFtZSI6Im5hbWVuYW1lNyIsImlhdCI6MTczMDM1MjQ0MywiZXhwIjoxNzMwMzU2MDQzfQ.j9fJnAYKGhz-pdej6PzL_74NuHBj1EKwy35nCB5_gdI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcnVzZXI3IiwibmFtZSI6Im5hbWVuYW1lNyIsImlhdCI6MTczMDM2MTEwNywiZXhwIjoxNzMzOTYxMTA3fQ.yT1JRYqzPY2muOpOvudDtTLTfoI_SPk8aiOiaj7b9Xw
