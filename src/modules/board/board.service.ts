@@ -39,7 +39,6 @@ export class BoardService {
 
     const board = this.boardRepository.create({
       ...data,
-      user,
     });
 
     return await this.boardRepository.save(board);

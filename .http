@@ -12,10 +12,11 @@ GET http://localhost:3000/board/1
 
 POST http://localhost:3000/board
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcnVzZXI3IiwibmFtZSI6Im5hbWVuYW1lNyIsImlhdCI6MTczMDM1MjQ0MywiZXhwIjoxNzMwMzU2MDQzfQ.j9fJnAYKGhz-pdej6PzL_74NuHBj1EKwy35nCB5_gdI
+
 
 {
-    "userId": 1,
-    "contents": "2"
+    "contents": "new API3"
 }
 ###
 
@@ -73,4 +74,4 @@ Content-Type: application/json
 ###
 # 프로필 가져오기
 GET http://localhost:3000/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJ1c2VyNyIsIm5hbWUiOiJuYW1lbmFtZTciLCJpYXQiOjE3MzAzNDc3NzMsImV4cCI6MTczMDM1MTM3M30.tyepTK5ZMDIe95eJoGFMs9Y2yfRh2yFfL6ZhwDIGc6g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcnVzZXI3IiwibmFtZSI6Im5hbWVuYW1lNyIsImlhdCI6MTczMDM1MjQ0MywiZXhwIjoxNzMwMzU2MDQzfQ.j9fJnAYKGhz-pdej6PzL_74NuHBj1EKwy35nCB5_gdI
