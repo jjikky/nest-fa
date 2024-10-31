@@ -6,7 +6,7 @@ GET http://localhost:3000/board
 ###
 
 # 게시물 하나 가져오기
-GET http://localhost:3000/board/1
+GET http://localhost:3000/board/12
 ###
 
 
@@ -16,7 +16,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuY
 
 
 {
-    "contents": "new API3"
+    "contents": "new API4"
 }
 ###
 
