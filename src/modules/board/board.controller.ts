@@ -49,15 +49,18 @@ export class BoardController {
   }
 
   @Put(':id')
+  @UseGuards(JwtAuthGuard)
   async update(
+    @UserInfo() userInfo,
     @Param('id', ParseIntPipe) id: number,
     @Body(new ValidationPipe()) board: UpdateBoardDto,
   ) {
-    return await this.boardService.updateOne(id, board);
+    return await this.boardService.updateOne(userInfo.id, id, board);
   }
 
   @Delete(':id')
-  async remove(@Param('id', ParseIntPipe) id: number) {
-    return await this.boardService.deleteOne(id);
+  @UseGuards(JwtAuthGuard)
+  async remove(@UserInfo() userInfo, @Param('id', ParseIntPipe) id: number) {
+    return await this.boardService.deleteOne(userInfo.id, id);
   }
 }
