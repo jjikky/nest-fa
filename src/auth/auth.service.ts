@@ -12,19 +12,19 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, password: string) {
-    const user = await this.userService.getUserByUsername(username);
-    if (user) {
+    const user = await this.userService.getUserByUsernameWithPassword(username);
+    if (user && user.password) {
       const match = await compare(password, user.password);
       if (match) {
-        return user;
+        const { password, ...result } = user;
+        return result;
       }
-      return null;
     }
     return null;
   }
 
   async login(user: UserEntity) {
-    const payload = { username: user.username, name: user.name };
+    const payload = { id: user.id, username: user.username, name: user.name };
     return {
       accessToken: await this.jwtService.signAsync(payload, {
         secret: 'secret',
