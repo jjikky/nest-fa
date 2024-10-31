@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { UserEntity } from 'src/modules/user/infrastructure/db/entities/user.entity';
-import { EntityRelationalHelper } from 'src/utils/relational-entity-helper';
 import {
   Column,
   CreateDateColumn,
@@ -12,7 +11,7 @@ import {
 } from 'typeorm';
 
 @Entity({ name: 'board' })
-export class BoardEntity extends EntityRelationalHelper {
+export class BoardEntity {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 

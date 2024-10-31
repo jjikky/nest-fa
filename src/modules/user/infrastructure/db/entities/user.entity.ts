@@ -1,10 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { BoardEntity } from 'src/modules/board/infrastructure/db/entities/board.entity';
-import { EntityRelationalHelper } from 'src/utils/relational-entity-helper';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'user' })
-export class UserEntity extends EntityRelationalHelper {
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
