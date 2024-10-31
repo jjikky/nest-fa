@@ -57,3 +57,20 @@ Content-Type: application/json
     "password": "password7"
 
 }
+
+###
+# 로그인
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "useruser7",
+    "password": "password7"
+
+}
+
+
+###
+# 프로필 가져오기
+GET http://localhost:3000/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJ1c2VyNyIsIm5hbWUiOiJuYW1lbmFtZTciLCJpYXQiOjE3MzAzNDc3NzMsImV4cCI6MTczMDM1MTM3M30.tyepTK5ZMDIe95eJoGFMs9Y2yfRh2yFfL6ZhwDIGc6g
