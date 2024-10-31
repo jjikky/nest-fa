@@ -4,7 +4,7 @@ import { UserEntity } from './infrastructure/db/entities/user.entity';
 import { Repository } from 'typeorm';
 import { BoardEntity } from '../board/infrastructure/db/entities/board.entity';
 import { CreateUserDto } from './dto/create-user.dto';
-import { hash, compare } from 'bcrypt';
+import { hash } from 'bcrypt';
 import { LoginUserDto } from './dto/login-user.dto';
 import * as jwt from 'jsonwebtoken';
 
@@ -37,14 +37,14 @@ export class UserService {
     return qb.getMany();
   }
 
+  async getUserByUsername(username: string) {
+    return this.userRepository.findOneBy({ username });
+  }
+
   async login(data: LoginUserDto) {
     const { username, password } = data;
     const user = await this.userRepository.findOneBy({ username });
     if (!user) throw new HttpException('NOT_FOUND', HttpStatus.NOT_FOUND);
-
-    const match = await compare(password, user.password);
-    if (!match)
-      throw new HttpException('UNAUTHORIZED', HttpStatus.UNAUTHORIZED);
 
     const payload = {
       username,
