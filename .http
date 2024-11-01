@@ -48,7 +48,6 @@ Content-Type: application/json
     "name": "namename7",
     "password": "password7"
 }
-
 ###
 # 로그인
 POST http://localhost:3000/user/login

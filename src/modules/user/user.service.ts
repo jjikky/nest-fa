@@ -41,23 +41,6 @@ export class UserService {
     return this.userRepository.findOneBy({ username });
   }
 
-  async login(data: LoginUserDto) {
-    const { username, password } = data;
-    const user = await this.userRepository.findOneBy({ username });
-    if (!user) throw new HttpException('NOT_FOUND', HttpStatus.NOT_FOUND);
-
-    const payload = {
-      username,
-      name: user.name,
-    };
-
-    const accessToken = jwt.sign(payload, 'secret', {
-      expiresIn: '1000h',
-    });
-
-    return { accessToken };
-  }
-
   async encryptPassword(password: string) {
     const DEFAULT_SALT = 11;
     return await hash(password, DEFAULT_SALT);
